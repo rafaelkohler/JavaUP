@@ -29,7 +29,7 @@ public class Principal {
 	 */
 	public static int menu2() {
 
-		String[] opcoes = { "Cálculo do enésimo termo da PA.", "Cálculo da média Aritmetica.",
+		String[] opcoes = { "Cálculo do enésimo termo da PA.", "Cálculo da distância entre dois pontos", "Cálculo da média Aritmetica.",
 				"Cálculo da média ponderada.", "Cálculo de conversão de celsius para fahrenheint.",
 				"Cálculo de volume do cilindro.", "Cálculo de gasto de combustivel.",
 				"Cálculo do valor final a ser pago por uma compra." };
@@ -56,21 +56,24 @@ public class Principal {
 			calcularEnesimoTermoPA();
 			break;
 		case 2:
-			calcularMediaAritmetica();
+			calcularDistancia();
 			break;
 		case 3:
-			calcularMediaPonderada();
+			calcularMediaAritmetica();
 			break;
 		case 4:
-			converterCelsiusParaFahrenheint();
+			calcularMediaPonderada();
 			break;
 		case 5:
-			calcularVolumeCilindro();
+			converterCelsiusParaFahrenheint();
 			break;
 		case 6:
-			calcularCombustivel();
+			calcularVolumeCilindro();
 			break;
 		case 7:
+			calcularCombustivel();
+			break;
+		case 8:
 			calcularValorPago();
 			break;
 		}
@@ -91,6 +94,20 @@ public class Principal {
 
 		// Printa na tela
 		System.out.println("O resultado da an = " + an);
+	}
+	
+	/**
+	 * Método para calcular a distância entre dois pontos.
+	 */
+	public static void calcularDistancia() {
+		double x1 = Console.recuperaDecimal("Favor passar o valor de x1: ");
+		double x2 = Console.recuperaDecimal("Favor passar o valor de x2: ");
+		double y1 = Console.recuperaDecimal("Favor passar o valor de y1: ");
+		double y2 = Console.recuperaDecimal("Favor passar o valor de y2: ");
+		
+		double resultado = Exercicios.calcularDistancia(x1, y1, x2, y2);
+		System.out.printf("A distÇancia entre os dois pontos é: %.2f\n\n", resultado);
+
 	}
 
 	/**

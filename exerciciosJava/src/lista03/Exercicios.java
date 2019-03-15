@@ -45,4 +45,88 @@ public class Exercicios {
 		}
 		return pesoIdeal;
 	}
+
+	/**
+	 * Faz o cálculo de Báskara para a equacao de segundo grau.
+	 * 
+	 * @param a Termo em x ao quadrado.
+	 * @param b Termo em x.
+	 * @param c Termo em x elevado a zero.
+	 * @return
+	 */
+	public static double[] calcularEquacao2Grau(double a, double b, double c) {
+
+		double delta = Math.pow(b, 2) - 4 * a * c;
+		if (delta < 0) {
+			// Não tem raízes reais.
+			double[] vazio = {};
+			return vazio;
+		}
+
+		if (delta == 0) {
+			// Apenas uma razi real.
+			double raiz = -b / 2 * a;
+			double[] umaRaiz = { raiz };
+			return umaRaiz;
+
+		}
+
+		// Duas raízes reais.
+		double raiz1 = (-b + Math.sqrt(delta)) / 2 * a;
+		double raiz2 = (-b - Math.sqrt(delta)) / 2 * a;
+		double[] raizes = { raiz1, raiz2 };
+		return raizes;
+	}
+
+	/**
+	 * Método para fazer a o cálculo de formas de pagamento.
+	 * 
+	 * @param codigo Seleção da opção de pagamento
+	 * @param valor  Valor do produto
+	 * @return
+	 */
+	public static double calcularPagamento(int codigo, double valor) {
+		switch (codigo) {
+		case 1:
+			valor = valor * 0.9;
+			return valor;
+		case 2:
+			valor = valor * 0.95;
+			return valor;
+		case 3:
+			valor = valor / 2;
+			return valor;
+		case 4:
+			valor = (valor * 1.1) / 3;
+			return valor;
+		}
+		return (Double) null;
+	}
+
+	/**
+	 * Método para montar uma calculadora simples
+	 * 
+	 * @param valor1   Primeiro valor informado
+	 * @param valor2   Segundo valor informado
+	 * @param operacao Seleção da operação
+	 * @return
+	 */
+	public static double usarCalculadora(double valor1, double valor2, int operacao) {
+		switch (operacao) {
+		case 1:
+			return valor1 + valor2;
+		case 2:
+			return valor1 - valor2;
+		case 3:
+			return valor1 * valor2;
+		case 4:
+			return valor1 / valor2;
+		}
+		return (Double) null;
+	}
+
+	public static double calcularDistancia(double x1, double x2, double y1, double y2) {
+		return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
+	}
+	
 }

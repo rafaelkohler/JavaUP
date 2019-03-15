@@ -21,7 +21,19 @@ public class Exercicios {
 	}
 	
 	/**
-	 * Ex02 . Função para calcular a média aritmetica de três notas.
+	 * Método para retornar a distância entre dois pontos.
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 * @return
+	 */
+	public static double calcularDistancia(double x1, double y1, double x2, double y2) {
+		return Math.sqrt(Math.pow((x2-x1), 2) + Math.pow((y2-y1), 2));
+	}
+	
+	/**
+	 * Ex03 . Função para calcular a média aritmetica de três notas.
 	 * @param nota1 - Primeira nota.
 	 * @param nota2 - Segunda nota.
 	 * @param nota3 - Terceira nota.
