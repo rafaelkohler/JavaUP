@@ -1,6 +1,7 @@
 package lista03;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -124,9 +125,54 @@ public class Exercicios {
 		}
 		return (Double) null;
 	}
-
-	public static double calcularDistancia(double x1, double x2, double y1, double y2) {
+	
+	public static double calcularDistanciaEntrePontos(double x1, double x2, double y1, double y2) {
 		return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
+	}	
+
+	/**
+	 * Método que monta qual o tipo de um triângulo
+	 * @param x1
+	 * @param x2
+	 * @param y1
+	 * @param y2
+	 * @param x3
+	 * @param y3
+	 * @return Retorna uma string com o tipo de triângulo
+	 */
+	public static String identificarTriangulo(double x1, double x2, double y1, double y2, double x3, double y3) {
+		double lado1 = calcularDistanciaEntrePontos(x1, x2, y1, y2);
+		double lado2 = calcularDistanciaEntrePontos(x3, x2, y3, y2);
+		double lado3 = calcularDistanciaEntrePontos(x3, x1, y3, y1);
+		
+		ArrayList<Double> distancias = new ArrayList<>();
+		distancias.add(lado1);
+		distancias.add(lado2);
+		distancias.add(lado3);
+		System.out.println(distancias);
+		
+		Collections.sort(distancias); //ordena do menor para o maior
+		System.out.println(distancias);
+		
+		Collections.reverse(distancias); //inverte o array, primeiro precisa ordenar do menor para maior e depois usa o metodo reveerse e deixa do maior para o menor
+		System.out.println(distancias);
+		Collections.shuffle(distancias); // embaralha a lista
+		System.out.println(distancias);
+		System.out.println(distancias.get(1)); //pega um valor de um indice
+		distancias.set(2, 45.0); // inclui um valor em uma determinada posicao, primeiro passa a posicao e depois o valor
+		distancias.remove(0); // remove um valor passado a posicao a ser removida no indice
+		
+		if(lado1 != lado2 && lado2 != lado3 && lado3 != lado1) {
+			return "Este é um triângulo Escaleno";
+		} else if(lado1 == lado3 || lado2 == lado1) {
+			return "Este é um triângulo Isóceles";
+		} else if(lado1 == lado2 && lado2 == lado3 && lado3 == lado1) {
+			return "Este é um triângulo Eqüilátero";
+		} else {
+			return "Estas distâncias não formam triângulo";
+
+		}
+		
 	}
 	
 }

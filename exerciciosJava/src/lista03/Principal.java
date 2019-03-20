@@ -3,6 +3,8 @@ package lista03;
 import java.util.ArrayList;
 import java.util.List;
 
+import lista01.Console;
+
 /**
  * Essa classe vai servir para a resolução da lista 01 de exercícios.
  * 
@@ -33,7 +35,7 @@ public class Principal {
 	 */
 	public static int menu2() {
 
-		String[] opcoes = { "Cálculo do peso ideal", "Equação de segundo grau", "Pagamento", "Calculadora simples" };
+		String[] opcoes = { "Cálculo do peso ideal", "Equação de segundo grau", "Pagamento", "Calculadora simples", "Cálculo distância dos trinângulos" };
 		int menu = Console.mostrarMenu(opcoes, "Selecione a opção desejada da lista 03:", null);
 		return menu;
 
@@ -60,6 +62,7 @@ public class Principal {
 			calculadora();
 			break;
 		case 5:
+			triangulo();
 			break;
 		case 6:
 			break;
@@ -142,4 +145,22 @@ public class Principal {
 		double resultado = Exercicios.usarCalculadora(valor1, valor2, operacao);
 		System.out.println("O resultado da operação é: " + resultado);
 	}
+	
+	/**
+	 * Método que retorna uma string com o tipo do triângulo.
+	 */
+	public static void triangulo() {
+		double x1 = Console.recuperaDecimal("Favor passar o valor de x1: ");
+		double y1 = Console.recuperaDecimal("Favor passar o valor de y1: ");
+		double x2 = Console.recuperaDecimal("Favor passar o valor de x2: ");
+		double y2 = Console.recuperaDecimal("Favor passar o valor de y2: ");
+		double x3 = Console.recuperaDecimal("Favor passar o valor de x3: ");
+		double y3 = Console.recuperaDecimal("Favor passar o valor de y3: ");
+		
+		String tipoTriangulo = Exercicios.identificarTriangulo(x1, x2, y1, y2, x3, y3);
+		System.out.println(tipoTriangulo);
+		
+		
+	}
+	
 }
