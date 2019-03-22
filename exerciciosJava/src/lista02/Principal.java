@@ -9,6 +9,7 @@ import java.util.List;
  * @author Rafael Kohler
  *
  */
+
 public class Principal {
 
 	/**
@@ -33,7 +34,8 @@ public class Principal {
 	 */
 	public static int menu2() {
 
-		String[] opcoes = { "Mostra vetor", "Maior elemento do vetor", "Menor elemento do vetor e sua posição", "Vetor inverso", "Vetor multiplicado", "Produto escalar" };
+		String[] opcoes = { "Mostra vetor", "Maior elemento do vetor", "Menor elemento do vetor e sua posição",
+				"Vetor inverso", "Vetor multiplicado", "Produto escalar", "Fibonacci Vetor e Array", "Soma dos números pares", "Ordena do menor para o maior" };
 
 		int menu = Console.mostrarMenu(opcoes, "Selecione uma opções do menu", null);
 
@@ -68,7 +70,33 @@ public class Principal {
 			produtoEscalar();
 			break;
 		case 7:
+			criarSerieFibonacci();
 			break;
+		case 8:
+			produtorioNumerosPares();
+			break;
+		case 9:
+			ordenaMaior();
+			break;
+		}
+	}
+	
+	/**
+	 * Imprimi um vetor primitivo
+	 * 
+	 * @param valores
+	 */
+	public static void imprimirVetorInteiros(int[] valores) {
+		if (valores.length == 0) {
+			System.out.println("[]");
+		} else if (valores.length == 1) {
+			System.out.println("[" + valores[0] + "]");
+		} else {
+			System.out.print("[");
+			for (int i = 0; i < valores.length - 1; i++) {
+				System.out.print(valores[i] + ", ");
+			}
+			System.out.println(valores[valores.length - 1] + "]");
 		}
 	}
 
@@ -80,7 +108,7 @@ public class Principal {
 		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
 
 		List<Integer> lista = Exercicios.mostraVetor(tamanho);
-		System.out.println("A lista é: " +lista);
+		System.out.println("A lista é: " + lista);
 	}
 
 	/**
@@ -97,40 +125,70 @@ public class Principal {
 	 * Método que mostra o menor elemento da lista e sua posição.
 	 */
 	public static void menoElemento() {
-		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
+		int tamanhoVetor = Console.recuperaInteiro("Qual o tamanho do vetor? ");
 
-		int menor = Exercicios.menorElemento(tamanho);
-		System.out.println("O menor elemento da lista é: " + menor + "\n");
+		System.out.println("O menor elemento está na posição " + Exercicios.menorElemento(tamanhoVetor));
 
 	}
-	
+
 	/**
 	 * Método responsável por imprimir a lista invertida.
 	 */
 	public static void vetorInverso() {
 		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
-		
+
 		List<Integer> inverso = Exercicios.vetorInverso(tamanho);
 		System.out.println("O vetor inverso é: " + inverso);
 	}
-	
+
 	/**
 	 * Método que mostra a multiplicação dos valores de uma lista.
 	 */
 	public static void multiplicarVetor() {
 		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
-		
-		List<Double> vetorMultiplicado = Exercicios.multiplicarVetor(tamanho);
-		System.out.println("O menor elemento da lista é: " + vetorMultiplicado + "\n");
+
+		System.out.println("O resultado dos vetores multiplicados é: " + Exercicios.multiplicarVetor(tamanho) + "\n");
 
 	}
-	
+
 	public static void produtoEscalar() {
 		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
-		
+
 		Integer resultado = Exercicios.calcularProdutoEscalavel(tamanho);
 		System.out.println("O produto escalar entre dois vetores é: " + resultado);
+
+	}
+
+	/**
+	 * Cria serie de Fibonacci com vetor e Array
+	 */
+	public static void criarSerieFibonacci() {
+		int quantidade = Console.recuperaInteiro("Informe a quantidade de elementos da serie: ");
+
+		System.out.println("Vetor primitivo");
+		imprimirVetorInteiros(Exercicios.criaSeriefibonacciComVetor(quantidade));
+
+		ArrayList<Integer> fiboArray = Exercicios.criarSerieFibonacciComArray(quantidade);
+		System.out.println("Array List");
+		System.out.println(fiboArray);
+	}
+
+	/**
+	 * Cria o método que retorna a soma dos números pares de um vetor
+	 */
+	public static void produtorioNumerosPares() {
+		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
 		
+		System.out.println("A soma dos números pares é: " + Exercicios.produtorioNumerosPares(tamanho) + "\n");
+	}
+	
+	/**
+	 * Vetor ordenado do menor para o maior elemento.
+	 */
+	public static void ordenaMaior() {
+		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
+		
+		System.out.println("Vetor ordenado do menor para o maior " + Exercicios.ordenaMaior(tamanho) + "\n");
 	}
 
 }
