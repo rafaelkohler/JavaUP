@@ -1,5 +1,9 @@
 package calendario;
 
+import java.util.ArrayList;
+
+import lista02.Exercicios;
+
 public class Principal {
 
 	public static void main(String[] args) {
@@ -13,7 +17,7 @@ public class Principal {
 	}
 	public static int menu2() {
 
-		String[] opcoes = { "Ano bissexto", "Dias do mes", "Dias do mes (RESOLUCAO EM SALA)" };
+		String[] opcoes = { "Ano bissexto", "Dias do mes", "Dias do mes (RESOLUCAO EM SALA)", "Montar Calendario" };
 
 		int menu = Console.mostrarMenu(opcoes, "Selecione uma opções do menu", null);
 
@@ -37,6 +41,9 @@ public class Principal {
 			break;
 		case 3:
 			mostrarMes();
+			break;
+		case 4:
+			mostrarCalendario();
 			break;
 		}
 	}
@@ -67,6 +74,15 @@ public class Principal {
 		int mes = Console.recuperaInteiro("Digite um mês.");
 		
 		System.out.println("Estes sao os dias do mes " + mes + " do ano " + ano + " " + Calendario.criarDiasMes(mes, ano) + "\n");
+	}
+	
+	public static void mostrarCalendario() {
+		int ano = Console.recuperaInteiro("Digite um ano.");
+		
+		ArrayList<ArrayList<Integer>> calendario = Calendario.criarCalendarioAnual(ano);
+		for (ArrayList<Integer> mes : calendario) {
+			System.out.println(mes);
+		}
 	}
 	
 }

@@ -80,4 +80,20 @@ public class Calendario {
 		}
 		return diasDoMes;
 	}
+	
+	/**
+	 * 
+	 * @param ano
+	 * @return
+	 */
+	public static ArrayList<ArrayList<Integer>> criarCalendarioAnual(int ano) {
+		
+		ArrayList<ArrayList<Integer>> calendario = new ArrayList<>();
+		
+		for (int mes = 1; mes <= 12; mes++) {
+			ArrayList<Integer> diasMes = criarDiasMes(mes, ano);
+			calendario.add(diasMes);
+		}
+		return calendario;
+	}
 }
