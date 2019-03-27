@@ -1,11 +1,9 @@
 package lista02;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
-
-import javafx.util.Pair;
 
 /**
  * Classe para executar os exercícios da Lista 02.
@@ -95,7 +93,7 @@ public class Exercicios {
 	 * @param tamanhoVetor
 	 * @return
 	 */
-	public static List<Double> criarVetorDecimal(int tamanhoVetor) {
+	private static List<Double> criarVetorDecimal(int tamanhoVetor) {
 		List<Double> vetor = new ArrayList<Double>();
 		for (int i = 0; i < tamanhoVetor; i++) {
 			Double numero = Console.recuperaDecimal("Digite um valor para o vetor na posição " + (i + 1));
@@ -285,7 +283,8 @@ public class Exercicios {
 	}
 
 	/**
-	 * Retorna o vator com 
+	 * Retorna o vetor com menor elemento
+	 * 
 	 * @param tamanhoVetor
 	 * @return
 	 */
@@ -307,4 +306,152 @@ public class Exercicios {
 
 		return vetorB;
 	}
+
+	/**
+	 * ex012 Mostra os elementos repetidos e a quantidade de elementos repetidos
+	 * 
+	 * @param vetor        valores a serem verificados
+	 * @param tamanhoVetor
+	 * @return um conjunto de valores do tipo int[] com dois valores a saber: index
+	 *         0 eh o elemento que repetiu, index 1 eh a quantidade de repeticoes.
+	 */
+	public static int[][] verificarElementosRepetidos(int[] valores) {
+		// {0, 8, 5, 4, 7, 0, 6, 3, 4, 0, 7}
+		int[] avaliados = new int[0];
+		int[][] repetidos = new int[0][2];
+		for (int i = 0; i < valores.length; i++) {
+			// Tenho que guardar que o zero ja foi avaliado.
+			int paraAvaliar = valores[i];
+			if (precisaAvaliar(avaliados, paraAvaliar)) {
+				avaliados = adicionarValorNoVetor(avaliados, paraAvaliar);
+				int[] repeticoes = contarRepeticoes(valores, paraAvaliar);
+				if (repeticoes != null) {
+					repetidos = adicionarRepetidos(repetidos, repeticoes);
+				}
+			}
+		}
+		return repetidos;
+	}
+
+	/**
+	 * Adiciona um valor na ultima posicao, aumento o vetor de
+	 * 
+	 * @param vetor com os valores atuais
+	 * @param valor valor a ser inserido no vetor
+	 * @return um novo vetor com tamanho +1 e com o valor na ultima posicao
+	 */
+	private static int[] adicionarValorNoVetor(int[] vetor, int valor) {
+		int[] novo = new int[vetor.length + 1];
+		for (int i = 0; i < vetor.length; i++) {
+			novo[i] = vetor[i];
+		}
+		novo[novo.length - 1] = valor;
+		return novo;
+	}
+
+	/**
+	 * Verifica se um valor ja foi avaliado
+	 * 
+	 * @param avaliados   valores que ja foram avaliados
+	 * @param paraAvaliar o valor novo questionado
+	 * @return TRUE para tem que avaliar, FALSE para nao precisa avaliar
+	 */
+	private static boolean precisaAvaliar(int[] avaliados, int paraAvaliar) {
+		for (int i = 0; i < avaliados.length; i++) {
+			if (avaliados[i] == paraAvaliar) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Contabiliza a quantidade de ocorrencias de um valor no vetor de de valores
+	 * 
+	 * @param valores     a serem avaliados
+	 * @param paraAvaliar o valor a ser encontrado e contabilizado em repeticoes.
+	 * @return vetor int[] com dois valores, a saber: index 0 eh a quantidade de
+	 *         repeticoes e o index 1 eh o valor avaliado.
+	 */
+	private static int[] contarRepeticoes(int[] valores, int paraAvaliar) {
+		int repeticoes = 0;
+		for (int i = 0; i < valores.length; i++) {
+			if (valores[i] == paraAvaliar) {
+				repeticoes++;
+			}
+		}
+		if (repeticoes < 2) {
+			return null;
+		} else {
+			int[] ocorrenciasCurto = { repeticoes, paraAvaliar };
+//			int[] ocorrencias = new int[2];
+//			ocorrencias[0] = repeticoes;
+//			ocorrencias[1] = paraAvaliar;
+			return ocorrenciasCurto;
+		}
+	}
+
+	/**
+	 * Adiciona um par de repeticoes no Vetor de repetidos
+	 * 
+	 * @param repetidos  Array de repetidos
+	 * @param repeticoes representa um par de quantidade e valor repetido
+	 * @return um novo vetor com o valor repetido adicionado ao final.
+	 */
+	private static int[][] adicionarRepetidos(int[][] repetidos, int[] repeticoes) {
+		int[][] novo = new int[repetidos.length + 1][2];
+		for (int i = 0; i < repetidos.length; i++) {
+			novo[i] = repetidos[i];
+		}
+		novo[novo.length - 1] = repeticoes;
+		return novo;
+	}
+	
+	/**
+	 * Metodo com ArrayList
+	 * @param valores
+	 * @return
+	 */
+	public static ArrayList<ArrayList<Integer>> verificarElementosRepetidosArray(int tamanho) {
+		List<Integer> valores = criarVetorInteiro(tamanho);
+		ArrayList<Integer> avaliados = new ArrayList<>();
+		ArrayList<ArrayList<Integer>> repetidos = new ArrayList<>();
+		
+		for (int i = 0; i < valores.size(); i++) {
+			int paraAvaliar = valores.get(i);
+			if(!avaliados.contains(paraAvaliar)) {
+				avaliados.add(paraAvaliar);
+				int[] repeticoes = contarRepeticoesArray(valores, paraAvaliar);
+				if(repeticoes != null) {
+					ArrayList<Integer> repeticoesArray = new ArrayList<>();
+					for (int j = 0; j < repeticoes.length; j++) {
+						repeticoesArray.add(repeticoes[j]);
+					}
+					repetidos.add(repeticoesArray);
+				}
+			}
+		}
+		
+		return repetidos;
+	}
+	
+	private static int[] contarRepeticoesArray(List<Integer> valores, int paraAvaliar) {
+		int repeticoes = 0;
+		for (int i = 0; i < valores.size(); i++) {
+			if (valores.get(i) == paraAvaliar) {
+				repeticoes++;
+			}
+		}
+		if (repeticoes < 2) {
+			return null;
+		} else {
+			int[] ocorrenciasCurto = { repeticoes, paraAvaliar };
+//			int[] ocorrencias = new int[2];
+//			ocorrencias[0] = repeticoes;
+//			ocorrencias[1] = paraAvaliar;
+			return ocorrenciasCurto;
+		}
+	}
+
+	// [[0,1,2][0][0,1]]
 }

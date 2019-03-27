@@ -35,7 +35,8 @@ public class Principal {
 	public static int menu2() {
 
 		String[] opcoes = { "Mostra vetor", "Maior elemento do vetor", "Menor elemento do vetor e sua posição",
-				"Vetor inverso", "Vetor multiplicado", "Produto escalar", "Fibonacci Vetor e Array", "Soma dos números pares", "Ordena do menor para o maior" };
+				"Vetor inverso", "Vetor multiplicado", "Produto escalar", "Fibonacci Vetor e Array", "Soma dos números pares", "Ordena do menor para o maior",
+				"Repetidos - Array List"};
 
 		int menu = Console.mostrarMenu(opcoes, "Selecione uma opções do menu", null);
 
@@ -77,6 +78,9 @@ public class Principal {
 			break;
 		case 9:
 			ordenaMaior();
+			break;
+		case 10:
+			mostarElementosRepetidos();
 			break;
 		}
 	}
@@ -189,6 +193,24 @@ public class Principal {
 		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
 		
 		System.out.println("Vetor ordenado do menor para o maior " + Exercicios.ordenaMaior(tamanho) + "\n");
+	}
+	
+	/**
+	 * Imprimi os elementos repetidos do vetor 
+	 */
+	public static void mostarElementosRepetidos() {
+		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
+		
+		System.out.println("Os elementos repetidos do vetor são: " + Exercicios.verificarElementosRepetidosArray(tamanho) + "\n");
+	}
+	
+	public static void criarVetorPrimitivo() {
+		int tamanho = Console.recuperaInteiro("Digite o tamanho do seu vetor: ");
+
+		int[] vetor = new int[tamanho];
+		for (int i = 0; i < vetor.length; i++) {
+			vetor[i] = vetor[i];
+		}
 	}
 
 }
