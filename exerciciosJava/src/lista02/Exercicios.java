@@ -435,6 +435,12 @@ public class Exercicios {
 		return repetidos;
 	}
 	
+	/**
+	 * Metodo para fazer a contagem dos numeros repetidos dentro do Array
+	 * @param valores Lista de inteiros
+	 * @param paraAvaliar valor para avaliar
+	 * @return 
+	 */
 	private static int[] contarRepeticoesArray(List<Integer> valores, int paraAvaliar) {
 		int repeticoes = 0;
 		for (int i = 0; i < valores.size(); i++) {
