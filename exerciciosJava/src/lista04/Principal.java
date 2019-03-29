@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Classe para executar os exercícios da lista 004.
- * @author 1810647
+ * @author Rafael Kohler
  *
  */
 public class Principal {

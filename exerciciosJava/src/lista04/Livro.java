@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Classe para representar um Livro
- * @author 1810647
+ * @author Rafael Kohler
  *
  */
 public class Livro {
