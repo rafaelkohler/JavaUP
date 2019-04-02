@@ -11,6 +11,9 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
+		/** 
+		 * Exercicio001 da lista
+		 */
 		Livro livro01 = new Livro();
 		livro01.setCodigo("1598FHK");
 		livro01.setTitulo("Core Java 2");
@@ -46,6 +49,37 @@ public class Principal {
 		Livro livro03 = new Livro("9865PLO", "Use a cabeça! Java", autores, "0138426846", 2003);
 
 		System.out.println("\nLivro 03: " + livro03);
+		System.out.println();
+		
+		
+		
+		/**
+		 * Exercicio002 da lista
+		 */
+		Ponto ponto1 = new Ponto();
+		Ponto ponto2 = new Ponto(2.0, 5.0);
+		double distancia = Ponto.calcularDistancia(ponto1, ponto2);
+		System.out.printf("%.2f\n", distancia);
+		
+		Ponto ponto3 = new Ponto(7.0, 2.0);
+		double distancia2 = Ponto.calcularDistancia(ponto2, ponto3);
+		System.out.printf("%.2f\n", distancia2);
+		
+		ponto1.setX(10.0);
+		ponto1.setY(3.0);
+		double distancia3 = Ponto.calcularDistancia(ponto1, ponto2);
+		System.out.printf("%.2f\n", distancia3);
+		
+
+		Paciente p1 = new Paciente("00021", "Fulano da Silva");
+		Paciente p2 = new Paciente("000171", "Ciclano dos Santos");
+		p2.addHistorico("dor de cabeça");
+		
+		Compromisso c1 = new Compromisso("24/08/2005", "14h30min", "Beltrano Oliveira", p1);
+		Compromisso c2 = new Compromisso("26/08/2005", "17h", "João Camargo", p2);
+		
+		System.out.println(c1);
+		System.out.println(c2);
 
 	}
 }
