@@ -1,13 +1,18 @@
 package lista04;
 
+/**
+ * Representa um compromisso medico
+ * @author Rafael Kohler
+ *
+ */
 public class Compromisso {
 
 	private String data;
-	
+
 	private String hora;
-	
+
 	private String medico;
-	
+
 	private Paciente paciente;
 
 	public Compromisso(String data, String hora, String medico, Paciente paciente) {
@@ -48,10 +53,10 @@ public class Compromisso {
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
-	
+
 	@Override
 	public String toString() {
-		return super.toString();
+		return "Consulta marcada com " + this.medico + ", dia " + this.data + ", às " + this.hora + ". " + this.paciente;
 	}
-	
+
 }

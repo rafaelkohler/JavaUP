@@ -1,23 +1,30 @@
 package lista04;
 
+/**
+ * Classe para representar um ponto no plano cartesiano.
+ * @author Rafael Kohler
+ *
+ */
 public class Ponto {
 
-	private double x;
+	private Double x;
 	
-	private double y;
+	private Double y;
 
+	/**
+	 * Cria um ponto na origem (0, 0)
+	 */
 	public Ponto() {
-		
+		this.x = 0d;
+		this.y = 0d;
 	}
 	
-	public Ponto(double x, double y) {
+	public Ponto(Double x, Double y) {
 		this.x = x;
 		this.y = y;
 	}
 
-
-
-	public double getX() {
+	public Double getX() {
 		return x;
 	}
 
@@ -25,25 +32,30 @@ public class Ponto {
 		this.x = x;
 	}
 
-	public double getY() {
+	public Double getY() {
 		return y;
 	}
 
-	public void setY(double y) {
+	public void setY(Double y) {
 		this.y = y;
 	}
 	
-	public double distancia(double x, double y) {
-		return Math.pow((x - y), 2);
+	/**
+	 * Calcula a distancia do ponto atual ate as coordenadas informadas.
+	 * @param x
+	 * @param y
+	 * @return a distancia
+	 */
+	public Double distancia(Double x, Double y) {
+		return Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2));
 	}
 	
-	public double distancia(Ponto p) {
-		double ponto = 0;
-		return ponto;
+	/**
+	 * Calcula a distancia do ponto atual ate outro ponto informado
+	 * @param ponto
+	 * @return a distancia
+	 */
+	public Double distancia(Ponto ponto) {
+		return distancia(ponto.getX(), ponto.getY());
 	}
-	
-	public static double calcularDistancia(Ponto ponto1, Ponto ponto2) {
-		return Math.sqrt(Math.pow((ponto2.x - ponto1.x), 2) + Math.pow((ponto2.y - ponto1.y), 2));
-	}
-	
 }

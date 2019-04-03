@@ -2,75 +2,175 @@ package lista04;
 
 import java.util.ArrayList;
 
+import lista01.Console;
+
 /**
  * Classe para executar os exercícios da lista 004.
+ * 
  * @author Rafael Kohler
  *
  */
 public class Principal {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		
-		/** 
-		 * Exercicio001 da lista
-		 */
-		Livro livro01 = new Livro();
-		livro01.setCodigo("1598FHK");
-		livro01.setTitulo("Core Java 2");
-		
-		ArrayList<String> autoresLivro01 = new ArrayList<>();
-		autoresLivro01.add("Cay S. Horstmann");
-		autoresLivro01.add("Gary Cornell");
-		
-		livro01.setAutores(autoresLivro01);
-		livro01.setIsbn("0130819336");
-		livro01.setAno(1999);
-		System.out.println("Livro 01:" + livro01);
-		
-		Livro livro02 = new Livro();
-		livro02.setCodigo("9865PLO");
-		livro02.setTitulo("Java, How to Program");
-		
-		ArrayList<String> autoresLivro02 = new ArrayList<>();
-		autoresLivro02.add("Harvey Deitel");
-		
-		livro02.setAutores(autoresLivro02);
-		livro02.setIsbn("0130341517");
-		livro02.setAno(1999);
-		System.out.println("\nLivro 02: " + livro02);
-		
-		
+
+//		Livro livro01 = new Livro();
+//		livro01.setCodigo("1598FHK");
+//		livro01.setTitulo("Core Java 2");
+//
+//		ArrayList<String> autoresLivro01 = new ArrayList<>();
+//		autoresLivro01.add("Cay S. Horstmann");
+//		autoresLivro01.add("Gary Cornell");
+//
+//		livro01.setAutores(autoresLivro01);
+//		livro01.setIsbn("0130819336");
+//		livro01.setAno(1999);
+//		System.out.println("Livro 01:" + livro01);
+//
+//		Livro livro02 = new Livro();
+//		livro02.setCodigo("9865PLO");
+//		livro02.setTitulo("Java, How to Program");
+//
+//		ArrayList<String> autoresLivro02 = new ArrayList<>();
+//		autoresLivro02.add("Harvey Deitel");
+//
+//		livro02.setAutores(autoresLivro02);
+//		livro02.setIsbn("0130341517");
+//		livro02.setAno(1999);
+//		System.out.println("\nLivro 02: " + livro02);
+//
+//		/**
+//		 * Usando o contrutor para popular um objeto.
+//		 */
+//		ArrayList<String> autores = new ArrayList<>();
+//		autores.add("Kathy Sierra");
+//		autores.add("Bert Bates");
+//		Livro livro03 = new Livro("9865PLO", "Use a cabeça! Java", autores, "0138426846", 2003);
+//
+//		System.out.println("\nLivro 03: " + livro03);
+//		System.out.println();
+
+		// usando um metodo estatico para criar um livro
+//		Livro livro4 = criarLivro();
+//		System.out.println("\nLivro 04: " + livro4);
+//		System.out.println();
+
+//		ArrayList<Livro> livros = new ArrayList<>();
+//		for (int i = 0; i < 5; i++) {
+//			livros.add(criarLivro());
+//		}
+
 		/**
-		 * Usando o contrutor para popular um objeto.
+		 * Exercicio 002 da lista
 		 */
+		int menu = menu2();
+		do {
+			selecaoMenu(menu);
+			menu = menu2();
+
+		} while (menu > -1);
+	}
+
+	/**
+	 * Faz a execução da tela com as opções ao usuário e devolve a escolha.
+	 * 
+	 * @return - Opção selecionada pelo usuário.
+	 */
+	public static int menu2() {
+
+		String[] opcoes = { "Exercicio 001 - Livro", "Exercicio 002 - Distancia", "Exercicio 003 - Compromisso" };
+		int menu = Console.mostrarMenu(opcoes, "Lista 04:", null);
+		return menu;
+
+	}
+
+	/**
+	 * Chama as funções de acordo com a seleção do usuário.
+	 * 
+	 * @param menu - Opção selecionada pelo usuário.
+	 */
+	public static void selecaoMenu(int menu) {
+
+		switch (menu) {
+		case 1:
+			System.out.println(criarLivro());
+			break;
+		case 2:
+			executarCenario2();
+			break;
+		case 3:
+			executarCenario3();
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+		}
+	}
+
+	/**
+	 * Exercicio 001
+	 * 
+	 * Cria um livro pelo teclado
+	 */
+	public static Livro criarLivro() {
+
+		Livro livro = new Livro();
+		String codigo = Console.recuperaTexto("Informe o codigo: ");
+		livro.setCodigo(codigo);
+		String titulo = Console.recuperaTexto("Informe o titulo do livro: ");
+		livro.setTitulo(titulo);
 		ArrayList<String> autores = new ArrayList<>();
-		autores.add("Kathy Sierra");
-		autores.add("Bert Bates");
-		Livro livro03 = new Livro("9865PLO", "Use a cabeça! Java", autores, "0138426846", 2003);
+		Integer quantidade = Console.recuperaInteiro("Informe quantos autores: ");
+		for (int i = 0; i < quantidade; i++) {
+			String autor = Console.recuperaTexto("Informe o autor: " + (i + 1));
+			autores.add(autor);
+		}
+		livro.setAutores(autores);
+		String isbn = Console.recuperaTexto("Informe o ISBN: ");
+		livro.setIsbn(isbn);
+		Integer ano = Console.recuperaInteiro("Informe o ano: ");
+		livro.setAno(ano);
 
-		System.out.println("\nLivro 03: " + livro03);
-		System.out.println();
+		return livro;
+	}
+
+	/**
+	 * Exercicio 002
+	 * 
+	 * Executa cenario 02
+	 */
+	public static void executarCenario2() {
 		
-		
-		
-		/**
-		 * Exercicio002 da lista
-		 */
+		//Ponto na origem, coordenadas(0, 0)
 		Ponto ponto1 = new Ponto();
-		Ponto ponto2 = new Ponto(2.0, 5.0);
-		double distancia = Ponto.calcularDistancia(ponto1, ponto2);
-		System.out.printf("%.2f\n", distancia);
-		
-		Ponto ponto3 = new Ponto(7.0, 2.0);
-		double distancia2 = Ponto.calcularDistancia(ponto2, ponto3);
-		System.out.printf("%.2f\n", distancia2);
-		
-		ponto1.setX(10.0);
-		ponto1.setY(3.0);
-		double distancia3 = Ponto.calcularDistancia(ponto1, ponto2);
-		System.out.printf("%.2f\n", distancia3);
-		
+		Ponto ponto2 = new Ponto(2d, 5d);
 
+		double dp1p2 = ponto1.distancia(ponto2);
+		System.out.println("dp1p2 " + dp1p2);
+		
+		double dp272 = ponto2.distancia(7d, 2d);
+		System.out.println("dp272 " + dp272);
+		
+		ponto1.setX(10d);
+		ponto1.setY(3d);
+		dp1p2 = ponto1.distancia(ponto2);
+		System.out.println("dp1p2 " + dp1p2);
+		
+	}
+
+	/**
+	 * Exercicio 003
+	 * Executa o cenario 3
+	 */
+	public static void executarCenario3() {
 		Paciente p1 = new Paciente("00021", "Fulano da Silva");
 		Paciente p2 = new Paciente("000171", "Ciclano dos Santos");
 		p2.addHistorico("dor de cabeça");
@@ -78,8 +178,14 @@ public class Principal {
 		Compromisso c1 = new Compromisso("24/08/2005", "14h30min", "Beltrano Oliveira", p1);
 		Compromisso c2 = new Compromisso("26/08/2005", "17h", "João Camargo", p2);
 		
+		c1.getPaciente().addHistorico("úlcera gástrica");
+		c2.getPaciente().addHistorico("stress");
+		c2.getPaciente().addHistorico("arritmia cardíaca");
+		
 		System.out.println(c1);
 		System.out.println(c2);
-
+		System.out.println();
+		
 	}
+
 }
