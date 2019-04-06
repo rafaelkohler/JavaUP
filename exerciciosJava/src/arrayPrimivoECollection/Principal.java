@@ -1,4 +1,4 @@
-package teste;
+package arrayPrimivoECollection;
 
 import java.util.ArrayList;
 
