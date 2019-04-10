@@ -2,7 +2,7 @@ package lista04;
 
 import java.util.ArrayList;
 
-import lista01.Console;
+import lista04.Console;
 
 /**
  * Classe para executar os exercícios da lista 004.
@@ -81,7 +81,8 @@ public class Principal {
 	 */
 	public static int menu2() {
 
-		String[] opcoes = { "Exercicio 001 - Livro", "Exercicio 002 - Distancia", "Exercicio 003 - Compromisso" };
+		String[] opcoes = { "Exercicio 001 - Livro", "Exercicio 002 - Distancia", "Exercicio 003 - Compromisso",
+				"Exercicio 004 = Pilha", "Exercicio 005 = Fila" };
 		int menu = Console.mostrarMenu(opcoes, "Lista 04:", null);
 		return menu;
 
@@ -105,8 +106,10 @@ public class Principal {
 			executarCenario3();
 			break;
 		case 4:
+			executarCenario04();
 			break;
 		case 5:
+			executarCenario05();
 			break;
 		case 6:
 			break;
@@ -121,7 +124,6 @@ public class Principal {
 	 * Cria um livro pelo teclado
 	 */
 	public static Livro criarLivro() {
-
 		Livro livro = new Livro();
 		String codigo = Console.recuperaTexto("Informe o codigo: ");
 		livro.setCodigo(codigo);
@@ -148,44 +150,145 @@ public class Principal {
 	 * Executa cenario 02
 	 */
 	public static void executarCenario2() {
-		
-		//Ponto na origem, coordenadas(0, 0)
+
+		// Ponto na origem, coordenadas(0, 0)
 		Ponto ponto1 = new Ponto();
 		Ponto ponto2 = new Ponto(2d, 5d);
 
 		double dp1p2 = ponto1.distancia(ponto2);
 		System.out.println("dp1p2 " + dp1p2);
-		
+
 		double dp272 = ponto2.distancia(7d, 2d);
 		System.out.println("dp272 " + dp272);
-		
+
 		ponto1.setX(10d);
 		ponto1.setY(3d);
 		dp1p2 = ponto1.distancia(ponto2);
 		System.out.println("dp1p2 " + dp1p2);
-		
+
 	}
 
 	/**
-	 * Exercicio 003
-	 * Executa o cenario 3
+	 * Exercicio 003 Executa o cenario 3
 	 */
 	public static void executarCenario3() {
 		Paciente p1 = new Paciente("00021", "Fulano da Silva");
 		Paciente p2 = new Paciente("000171", "Ciclano dos Santos");
 		p2.addHistorico("dor de cabeça");
-		
+
 		Compromisso c1 = new Compromisso("24/08/2005", "14h30min", "Beltrano Oliveira", p1);
 		Compromisso c2 = new Compromisso("26/08/2005", "17h", "João Camargo", p2);
-		
+
 		c1.getPaciente().addHistorico("úlcera gástrica");
 		c2.getPaciente().addHistorico("stress");
 		c2.getPaciente().addHistorico("arritmia cardíaca");
-		
+
 		System.out.println(c1);
 		System.out.println(c2);
 		System.out.println();
+
+	}
+
+	/**
+	 * Exercicio 004 Executa o cenario 4
+	 */
+	public static void executarCenario04() {
+		Pilha pilha = new Pilha();
+		String[] opcoes = { "Push - inserir livro", "Pop – remover livro", "Peek – visualizar livro",
+				"Lista – listar todos os livros" };
+		boolean continua = true;
+		do {
+			int opcao = Console.mostrarMenu(opcoes, "Pilha", null);
+
+			switch (opcao) {
+			case 1:
+				Livro livro = criarLivro();
+				pilha.push(livro);
+				System.out.println("Livro enviado para piha.\n");
+				break;
+			case 2:
+				Livro removido = pilha.pop();
+				if(removido != null) {
+					System.out.println("Livro removido:");
+					System.out.println(removido + "\n");
+				} else {
+					System.out.println("Nao ha livros na pilha");
+				}
+				
+				break;
+			case 3:
+				Livro leitura = pilha.peek();
+				if(leitura != null) {
+					System.out.println("Livro no topo:");
+					System.out.println(leitura + "\n");
+				} else {
+					System.out.println("Nao ha livros na pilha ");
+				}
+				
+				break;
+			case 4:
+				System.out.println("Pilha atual:");
+				System.out.println(pilha);
+				System.out.println("*********mesa*********\n");
+				break;
+			case -1:
+				System.out.println("Finalizando a pilha...");
+				continua = false;
+				break;
+			}
+		} while (continua);
+	}
+
+	/**
+	 * Exercicio 005 Executa o cenario 5
+	 */
+	public static void executarCenario05() {
+		Fila fila = new Fila();
+
+		Paciente paciente = criarPaciente();
+		fila.enqueue(paciente);
+		paciente = criarPaciente();
+		fila.enqueue(paciente);
 		
+		System.out.println(fila);
+		fila.dequeue();
+		System.out.println(fila);
+		fila.dequeue();
+		System.out.println(fila);
+		
+		
+//		
+//		String[] opcoes = { "Enqueue – inserir paciente", "Dequeue – remover paciente",
+//				"Lista – listar todos os pacientes" };
+//		boolean continua = true;
+//		do {
+//			int opcao = Console.mostrarMenu(opcoes, "Fila", null);
+//			switch (opcao) {
+//			case 1:
+//				
+//				break;
+//			case 2:
+//
+//				break;
+//
+//			case 3:
+//
+//				break;
+//
+//			case -1:
+//				System.out.println("Finalizando a fila...");
+//				continua = false;
+//				break;
+//			}
+//
+//		} while (continua);
+	}
+	
+	public static Paciente criarPaciente() {
+		String codigo = Console.recuperaTexto("Informe o codigo: ");
+		String nome = Console.recuperaTexto("Informe o nome: ");
+		Paciente paciente = new Paciente(codigo, nome);
+		return paciente;
 	}
 
 }
