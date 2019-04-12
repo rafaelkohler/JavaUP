@@ -82,7 +82,7 @@ public class Principal {
 	public static int menu2() {
 
 		String[] opcoes = { "Exercicio 001 - Livro", "Exercicio 002 - Distancia", "Exercicio 003 - Compromisso",
-				"Exercicio 004 = Pilha", "Exercicio 005 = Fila" };
+				"Exercicio 004 = Pilha", "Exercicio 005 = Fila", "Exercicio 006" };
 		int menu = Console.mostrarMenu(opcoes, "Lista 04:", null);
 		return menu;
 
@@ -112,6 +112,7 @@ public class Principal {
 			executarCenario05();
 			break;
 		case 6:
+			executarCenario06();
 			break;
 		case 7:
 			break;
@@ -208,23 +209,23 @@ public class Principal {
 				break;
 			case 2:
 				Livro removido = pilha.pop();
-				if(removido != null) {
+				if (removido != null) {
 					System.out.println("Livro removido:");
 					System.out.println(removido + "\n");
 				} else {
 					System.out.println("Nao ha livros na pilha");
 				}
-				
+
 				break;
 			case 3:
 				Livro leitura = pilha.peek();
-				if(leitura != null) {
+				if (leitura != null) {
 					System.out.println("Livro no topo:");
 					System.out.println(leitura + "\n");
 				} else {
 					System.out.println("Nao ha livros na pilha ");
 				}
-				
+
 				break;
 			case 4:
 				System.out.println("Pilha atual:");
@@ -246,49 +247,57 @@ public class Principal {
 		Fila fila = new Fila();
 
 		Paciente paciente = criarPaciente();
-		fila.enqueue(paciente);
-		paciente = criarPaciente();
-		fila.enqueue(paciente);
 		
-		System.out.println(fila);
-		fila.dequeue();
-		System.out.println(fila);
-		fila.dequeue();
-		System.out.println(fila);
-		
-		
-//		
-//		String[] opcoes = { "Enqueue – inserir paciente", "Dequeue – remover paciente",
-//				"Lista – listar todos os pacientes" };
-//		boolean continua = true;
-//		do {
-//			int opcao = Console.mostrarMenu(opcoes, "Fila", null);
-//			switch (opcao) {
-//			case 1:
-//				
-//				break;
-//			case 2:
-//
-//				break;
-//
-//			case 3:
-//
-//				break;
-//
-//			case -1:
-//				System.out.println("Finalizando a fila...");
-//				continua = false;
-//				break;
-//			}
-//
-//		} while (continua);
+		String[] opcoes = { "Enqueue – inserir paciente", "Dequeue – remover paciente",
+				"Lista – listar todos os pacientes" };
+		boolean continua = true;
+		do {
+			int opcao = Console.mostrarMenu(opcoes, "Fila", null);
+			switch (opcao) {
+			case 1:
+				fila.enqueue(paciente);
+				break;
+			case 2:
+				fila.dequeue();
+				break;
+			case 3:
+				fila.toString();
+				break;
+			case -1:
+				System.out.println("Finalizando a fila...");
+				continua = false;
+				break;
+			}
+
+		} while (continua);
 	}
-	
+
 	public static Paciente criarPaciente() {
 		String codigo = Console.recuperaTexto("Informe o codigo: ");
 		String nome = Console.recuperaTexto("Informe o nome: ");
 		Paciente paciente = new Paciente(codigo, nome);
 		return paciente;
+	}
+
+	public static void executarCenario06() {
+		String[] opcoes = {"Inserir", "Excluir", "Consultar", "Listar"};
+		
+		boolean continua = true;
+		
+		do {
+			int opcao = Console.mostrarMenu(opcoes, "Cenario 06", "# Coleção de DVDs #");
+			
+					switch (opcao) {
+					case 1:
+						
+						break;
+
+					case -1:
+						continua = false;
+						break;
+					}
+		} while (continua);
+		
 	}
 
 }

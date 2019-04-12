@@ -9,7 +9,7 @@ package lista04;
 public class Fila {
 
 	private Nodo head;
-
+	
 	public Fila() {
 
 	}
@@ -54,7 +54,7 @@ public class Fila {
 		} else {
 			String retorno = "";
 			Nodo atual = this.head;
-			while (atual.getProximo() != null) {
+			while (atual != null) {
 				retorno += atual.getPaciente() + "\n";
 				atual = atual.getProximo();
 			}
