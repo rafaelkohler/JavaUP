@@ -23,7 +23,7 @@ public class Pessoal extends Contato {
 	
 	@Override
 	public String toString() {
-		return super.toString() + "[" + "Celular: " + this.celular + "]";
+		return super.toString() + "\nCelular: " + this.celular;
 	}
 	
 }

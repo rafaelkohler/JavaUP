@@ -53,7 +53,7 @@ public class Contato {
 
 	@Override
 	public String toString() {
-		return "[" + "Codigo: " + this.codigo + ", Nome: " + this.nome + ", Telefone: " + this.telefone + "]";
+		return "Codigo: " + this.codigo + "\nNome: " + this.nome + "\nTelefone: " + this.telefone;
 	}
 
 }

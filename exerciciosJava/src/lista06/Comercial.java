@@ -23,7 +23,7 @@ public class Comercial extends Contato {
 
 	@Override
 	public String toString() {
-		return super.toString() + "[" + "Empresa: " + this.empresa + "]";
+		return super.toString() + "\nEmpresa: " + this.empresa;
 	}
 	
 }

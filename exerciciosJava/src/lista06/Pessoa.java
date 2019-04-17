@@ -24,7 +24,7 @@ public class Pessoa {
 
 	public void setNome(String nome) throws Exception {
 		if (nome == null || nome.isEmpty() || nome.length() < 5) {
-			throw new Exception("O nome não pode ser null, “” ou conter menos de 5 caracteres.");
+			throw new Exception("O nome não pode ser null, vazio ou conter menos de 5 caracteres.");
 		}
 		this.nome = nome;
 	}
@@ -35,7 +35,7 @@ public class Pessoa {
 
 	public void setTelefone(String telefone) throws Exception {
 		if (telefone == null || telefone.isEmpty() || telefone.length() != 10) {
-			throw new Exception("O telefone não pode ser null ou “” e deve ter exatamente 10 caracteres");
+			throw new Exception("O telefone não pode ser null ou vazio e deve ter exatamente 10 caracteres");
 		}
 		this.telefone = telefone;
 	}
@@ -53,7 +53,7 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Nome: " + this.nome + ", Telefone: " + this.telefone + ", Matricula: " + this.matricula + ".";
+		return "Nome: " + this.nome + "\nTelefone: " + this.telefone + "\nMatricula: " + this.matricula;
 	}
 
 }
