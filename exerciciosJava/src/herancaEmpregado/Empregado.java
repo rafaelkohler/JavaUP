@@ -7,7 +7,7 @@ import java.util.Date;
  * @author Rafael Kohler
  *
  */
-public class Empregado {
+public abstract class Empregado implements Comparable<Empregado> {
 	
 	private String nome;
 	
@@ -107,9 +107,12 @@ public class Empregado {
 		this.matricula = matricula;
 	}
 	
-	public Double getValorAPagar() {
-		return 0d;
-	}
+	public abstract Double getValorAPagar();
 	
+	@Override
+	public int compareTo(Empregado o) {
+		//return this.nome.compareTo(o.getNome());
+		return getValorAPagar().compareTo(o.getValorAPagar());
+	}
 
 }

@@ -1,10 +1,15 @@
 package herancaEmpregado;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FolhaPagamento {
 
 	public static void imprimirFolhaEmpregado(ArrayList<Empregado> empregados) {
+		
+		Collections.sort(empregados, new ComparaPorSalario());
+		
+		
 		for (Empregado empregado : empregados) {
 			String nome = empregado.getNome();
 			String matricula = empregado.getMatricula();
